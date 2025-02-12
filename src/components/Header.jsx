@@ -3,9 +3,9 @@ import "./Header.css";
 
 const navLinks = [
     { to: "/creatures", label: "Creatures" },
-    { to: "/equipment", label: "Equipment" },
-    { to: "/materials", label: "Materials" },
     { to: "/monsters", label: "Monsters" },
+    { to: "/materials", label: "Materials" },
+    { to: "/equipment", label: "Equipment" },
     { to: "/treasure", label: "Treasure" }
 ];
 
