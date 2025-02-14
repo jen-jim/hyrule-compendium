@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getCategory } from "../api/compendium";
+import { useCategory } from "../api/compendium";
 import EntryLink from "../components/EntryLink";
 
 export default function Category() {
     const { category } = useParams();
-    const [entries, setEntries] = useState([]);
+    const { data: entries, error, isLoading } = useCategory(category);
 
-    useEffect(() => {
-        getCategory(category).then((data) => {
-            setEntries(data);
-        });
-    }, [category]);
+    if (error) {
+        return <p>{error.message}</p>;
+    }
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <ul>

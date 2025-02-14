@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getEntry } from "../api/compendium";
+import { useEntry } from "../api/compendium";
 
 export default function Entry() {
     const { id } = useParams();
-    const [entry, setEntry] = useState(null);
+    const { data: entry, error, isLoading } = useEntry(id);
 
-    useEffect(() => {
-        getEntry(id).then((data) => {
-            setEntry(data);
-        });
-    }, [id]);
+    if (error) {
+        return <p>{error.message}</p>;
+    }
 
-    if (!entry) {
+    if (isLoading) {
         return <p>Loading...</p>;
     }
 
