@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { getCategory } from "../api/compendium";
 import EntryLink from "../components/EntryLink";
 
 export default function Category() {
@@ -7,13 +8,9 @@ export default function Category() {
     const [entries, setEntries] = useState([]);
 
     useEffect(() => {
-        fetch(
-            `https://botw-compendium.herokuapp.com/api/v3/compendium/category/${category}`
-        )
-            .then((response) => response.json())
-            .then(({ data }) => {
-                setEntries(data);
-            });
+        getCategory(category).then((data) => {
+            setEntries(data);
+        });
     }, [category]);
 
     return (
