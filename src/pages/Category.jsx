@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useCategory } from "../api/compendium";
+import { useCategory } from "../api";
 import EntryLink from "../components/EntryLink";
 
 export default function Category() {

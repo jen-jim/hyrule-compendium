@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useEntry } from "../api/compendium";
+import { useEntry } from "../api";
 
 export default function Entry() {
     const { id } = useParams();
