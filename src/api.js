@@ -24,6 +24,12 @@ export const useApiRequest = (path) => {
     return { data, error, isLoading };
 };
 
-export const useCategory = (category) => useApiRequest(`/category/${category}`);
+export const useCategory = (category) => {
+    const { data, error, isLoading } = useApiRequest(`/category/${category}`);
+    return { category: data, error, isLoading };
+};
 
-export const useEntry = (id) => useApiRequest(`/entry/${id}`);
+export const useEntry = (id) => {
+    const { data, error, isLoading } = useApiRequest(`/entry/${id}`);
+    return { entry: data, error, isLoading };
+};

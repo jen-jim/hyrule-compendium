@@ -4,7 +4,7 @@ import EntryLink from "../components/EntryLink";
 
 export default function Category() {
     const { category } = useParams();
-    const { data: entries, error, isLoading } = useCategory(category);
+    const { entries, error, isLoading } = useCategory(category);
 
     if (error) {
         return <p>{error.message}</p>;

@@ -3,7 +3,7 @@ import { useEntry } from "../api";
 
 export default function Entry() {
     const { id } = useParams();
-    const { data: entry, error, isLoading } = useEntry(id);
+    const { entry, error, isLoading } = useEntry(id);
 
     if (error) {
         return <p>{error.message}</p>;
