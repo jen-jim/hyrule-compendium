@@ -5,19 +5,19 @@ const api = axios.create({
     baseURL: "https://botw-compendium.herokuapp.com/api/v3/compendium",
 });
 
-export const useApiRequest = (path) => {
+export const useApiRequest = (path, { method = "get", params = {} }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        api.get(path)
+        api.request(path, { method, params })
             .then(({ data }) => {
                 setData(data.data);
             })
             .catch((error) => {
                 setError(error);
             });
-    }, [path]);
+    }, [path, method, params]);
 
     const isLoading = data === null && error === null;
 
