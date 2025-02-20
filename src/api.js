@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: "https://botw-compendium.herokuapp.com/api/v3/compendium",
 });
 
-export const useApiRequest = (path, { method = "get", params = {} }) => {
+export const useApiRequest = (path, { method = "get", params = {} } = {}) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
@@ -26,7 +26,7 @@ export const useApiRequest = (path, { method = "get", params = {} }) => {
 
 export const useCategory = (category) => {
     const { data, error, isLoading } = useApiRequest(`/category/${category}`);
-    return { category: data, error, isLoading };
+    return { entries: data, error, isLoading };
 };
 
 export const useEntry = (id) => {
